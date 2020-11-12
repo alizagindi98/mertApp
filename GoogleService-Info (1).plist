@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>289378632055-cdf920obhdinao5l72hiflsi9fo7qqqp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.289378632055-cdf920obhdinao5l72hiflsi9fo7qqqp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA_sUBEF08Yt7CnHB5RxoVVodEku8nyWsE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>289378632055</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.reactnativefirebase</string>
+	<key>PROJECT_ID</key>
+	<string>mert-app-a988a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mert-app-a988a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:289378632055:ios:95f12e06eb22f7753ea172</string>
+	<key>DATABASE_URL</key>
+	<string>https://mert-app-a988a.firebaseio.com</string>
+</dict>
+</plist>
