@@ -51,6 +51,10 @@ export default function HomeScreen(props) {
         }
     }
 
+    const onFormsPress = () => {
+        navigation.navigate('Forms')
+    }
+
     const renderEntity = ({item, index}) => {
         return (
             <View style={styles.entityContainer}>
@@ -76,6 +80,8 @@ export default function HomeScreen(props) {
                 <TouchableOpacity style={styles.button} onPress={onAddButtonPress}>
                     <Text style={styles.buttonText}>Add</Text>
                 </TouchableOpacity>
+                // Add button to forms 
+                <Button onClick={onFormsPress}>FORMS</Button>
             </View>
             { entities && (
                 <View style={styles.listContainer}>
