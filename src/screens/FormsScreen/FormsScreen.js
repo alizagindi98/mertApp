@@ -7,3 +7,4 @@ export default function FormsScreen(props) {
             <Text>Forms Screen</Text>
         </View>
     )
+}
