@@ -3,6 +3,7 @@ import { FlatList, Keyboard, Text, TextInput, TouchableOpacity, View } from 'rea
 import styles from './styles';
 import { firebase } from '../../firebase/config'
 
+
 export default function HomeScreen(props) {
 
     const [entityText, setEntityText] = useState('')
@@ -52,7 +53,7 @@ export default function HomeScreen(props) {
     }
 
     const onFormsPress = () => {
-        navigation.navigate('Forms')
+        navigate('Forms')
     }
 
     const renderEntity = ({item, index}) => {
@@ -80,8 +81,12 @@ export default function HomeScreen(props) {
                 <TouchableOpacity style={styles.button} onPress={onAddButtonPress}>
                     <Text style={styles.buttonText}>Add</Text>
                 </TouchableOpacity>
-                // Add button to forms 
-                <Button onClick={onFormsPress}>FORMS</Button>
+                {/* <Button onClick={onFormsPress}>FORMS</Button> */}
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => onFormsPress()}>
+                    <Text style={styles.buttonTitle}>FORMS</Text>
+                </TouchableOpacity>
             </View>
             { entities && (
                 <View style={styles.listContainer}>
