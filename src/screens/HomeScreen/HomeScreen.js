@@ -14,7 +14,7 @@ export default function HomeScreen(props) {
 
     useEffect(() => {
         entityRef
-            .where("authorID", "==", userID)
+            .where("authorID", "==", props.extraData.id)
             .orderBy('createdAt', 'desc')
             .onSnapshot(
                 querySnapshot => {
@@ -53,7 +53,7 @@ export default function HomeScreen(props) {
     }
 
     const onFormsPress = () => {
-        navigate('Forms')
+        props.navigation.navigate('Forms')
     }
 
     const renderEntity = ({item, index}) => {
