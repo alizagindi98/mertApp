@@ -13,7 +13,7 @@
     "@react-navigation/stack": "^5.12.6",
     "add": "^2.0.6",
     "base-64": "^1.0.0",
-    "expo": "~39.0.2",
+    "expo": "^39.0.4",
     "expo-status-bar": "~1.0.2",
     "firebase": "^7.9.0",
     "react": "16.13.1",
