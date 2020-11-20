@@ -3,21 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-    },
-    verticalContainer: {
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: "#fff",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-    },
-    horizontalContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        backgroundColor: "#fff",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
+        alignItems: 'center'
     },
     formContainer: {
         flexDirection: 'row',
@@ -56,5 +42,15 @@ export default StyleSheet.create({
     listContainer: {
         marginTop: 20,
         padding: 20,
+    },
+    entityContainer: {
+        marginTop: 16,
+        borderBottomColor: '#cccccc',
+        borderBottomWidth: 1,
+        paddingBottom: 16
+    },
+    entityText: {
+        fontSize: 20,
+        color: '#333333'
     }
 })
