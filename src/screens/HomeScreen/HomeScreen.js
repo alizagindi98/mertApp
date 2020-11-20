@@ -77,13 +77,19 @@ export default function HomeScreen(props) {
 
             <View style={homeStyles.section}>
                 <Text>
-                    Current Schedule will go here
+                    Basic Profile Info
                 </Text>
             </View>
 
             <View style={homeStyles.section}>
                 <Text>
-                    Announcements will go here
+                    Schedule will go here
+                </Text>
+            </View>
+
+            <View style={homeStyles.section}>
+                <Text>
+                    Dashboard will go here
                 </Text>
             </View>
 
