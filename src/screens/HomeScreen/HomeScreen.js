@@ -66,16 +66,15 @@ export default function HomeScreen(props) {
 
 
     const homeStyles = StyleSheet.create({
-      container: {
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center"
-      },
-      section: {
-        flex: 1,
-      }
+        container: {
+            flex: 1,
+            flexDirection: "column",
+            alignItems: "center"
+        },
+        section: {
+            flex: 1,
+        }
     });
-
 
     return (
         <SafeAreaView style={homeStyles.container}>
@@ -104,23 +103,25 @@ export default function HomeScreen(props) {
                 </Text>
             </View>
 
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => props.navigation.navigate('Forms')}>
-                <Text style={styles.buttonTitle}>Forms</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => onProfilePress()}>
-                <Text style={styles.buttonTitle}>User Profile</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => firebase.auth().signOut().then(() => {
-                    props.navigation.navigate('Login')
-                })}>
-                <Text style={styles.buttonTitle}>Logout</Text>
-            </TouchableOpacity>
+            <View style={styles.horizontalContainer}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => props.navigation.navigate('Forms')}>
+                    <Text style={styles.buttonTitle}>Forms</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => onProfilePress()}>
+                    <Text style={styles.buttonTitle}>User Profile</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => firebase.auth().signOut().then(() => {
+                        props.navigation.navigate('Login')
+                    })}>
+                    <Text style={styles.buttonTitle}>Logout</Text>
+                </TouchableOpacity>
+            </View>
 
             <View style={styles.formContainer}>
               <TextInput

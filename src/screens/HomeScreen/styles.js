@@ -8,14 +8,12 @@ export default StyleSheet.create({
     verticalContainer: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: "#fff",
         justifyContent: "flex-start",
         alignItems: "flex-start",
     },
     horizontalContainer: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: "#fff",
         justifyContent: "flex-start",
         alignItems: "flex-start",
     },
@@ -29,7 +27,7 @@ export default StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 30,
         paddingRight: 30,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center'
     },
     input: {
