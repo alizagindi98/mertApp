@@ -60,6 +60,10 @@ export default function HomeScreen(props) {
         }
     }
 
+    const onProfilePress = () => {
+        props.navigation.navigate('Profile')
+    }
+
 
     const homeStyles = StyleSheet.create({
       container: {
@@ -105,11 +109,10 @@ export default function HomeScreen(props) {
                 onPress={() => props.navigation.navigate('Forms')}>
                 <Text style={styles.buttonTitle}>Forms</Text>
             </TouchableOpacity>
-
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => props.navigation.navigate('Profile', {user})}>
-                <Text style={styles.buttonTitle}>Profile</Text>
+                onPress={() => onProfilePress()}>
+                <Text style={styles.buttonTitle}>User Profile</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
