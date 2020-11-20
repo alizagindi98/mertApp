@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity, SafeAreaView } from 'react-native'
 import styles from './styles';
 import FormLink from '../../components/FormsScreen/FormLink'
 
@@ -7,7 +7,7 @@ import FormLink from '../../components/FormsScreen/FormLink'
 export default function FormsScreen(props) {
     
     return (
-        <View>
+        <SafeAreaView style={styles.formsContainer}>
             
             <FormLink
                 title="PA Protocol"
@@ -25,6 +25,6 @@ export default function FormsScreen(props) {
                 title="Probationary Logs"
                 link='https://docs.google.com/spreadsheets/d/163IBjttNdGNvjn3-k9jIHE82uoupQFl4FG_XhJOCtBg/edit?ts=5b718fe6#gid=0'
             />
-        </View>
+        </SafeAreaView>
     )
 }
