@@ -60,6 +60,7 @@ export default function HomeScreen(props) {
         }
     }
 
+
     const homeStyles = StyleSheet.create({
       container: {
         flex: 1,
@@ -109,6 +110,13 @@ export default function HomeScreen(props) {
                 style={styles.button}
                 onPress={() => props.navigation.navigate('Profile')}>
                 <Text style={styles.buttonTitle}>Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => firebase.auth().signOut().then(() => {
+                    props.navigation.navigate('Login')
+                })}>
+                <Text style={styles.buttonTitle}>Logout</Text>
             </TouchableOpacity>
 
             <View style={styles.formContainer}>

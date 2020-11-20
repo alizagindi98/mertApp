@@ -55,7 +55,12 @@ export default function HomeScreen(props) {
     const onFormsPress = () => {
         navigate('Forms')
     }
-
+    
+    const onLogoutPress = () => {
+        firebase.auth().signOut().then(() => {
+            navigate('Login')
+        })
+    }
     const renderEntity = ({item, index}) => {
         return (
             <View style={styles.entityContainer}>
@@ -86,6 +91,11 @@ export default function HomeScreen(props) {
                     style={styles.button}
                     onPress={() => onFormsPress()}>
                     <Text style={styles.buttonTitle}>FORMS</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => onLogoutPress()}>
+                    <Text style={styles.buttonTitle}>Logout</Text>
                 </TouchableOpacity>
             </View>
             { entities && (
