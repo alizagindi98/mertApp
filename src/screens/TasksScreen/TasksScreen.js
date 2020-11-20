@@ -64,7 +64,7 @@ export default function WeeklyTasks(props) {
         <View style={styles.formContainer}>
             <TextInput
                 style={styles.input}
-                placeholder='Add new weekly task'
+                placeholder='Add new weekly task!'
                 placeholderTextColor="#aaaaaa"
                 onChangeText={(text) => setEntityText(text)}
                 value={entityText}
