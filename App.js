@@ -3,7 +3,7 @@ import React, { useEffect, useState, Button } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { LoginScreen, RegistrationScreen } from './src/screens'
-import DrawerNavigation from './src/navigation/DrawerNavigator'
+import TabNavigation from './src/navigation/TabNavigator'
 import { AntDesign } from '@expo/vector-icons';
 import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
@@ -45,13 +45,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         { user ? (
-          <Stack.Screen 
-            name={"root" }
-            options={{ 
-              drawerIcon: () => <AntDesign name="menufold" size={24} color="black" />
-            }}
-          >
-            {props => <DrawerNavigation {...props} extraData={user} />}
+          <Stack.Screen name={"root" }>
+            {props => <TabNavigation {...props} extraData={user} />}
           </Stack.Screen>
         ) : (
           <>
