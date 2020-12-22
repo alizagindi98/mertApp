@@ -38,7 +38,7 @@ export default function WeeklyTasks(props) {
     const deleteTask = (id) => {
         entityRef.doc(id).delete()
     }
-    
+
     const onAddButtonPress = () => {
         if (entityText && entityText.length > 0) {
             const timestamp = firebase.firestore.FieldValue.serverTimestamp();
