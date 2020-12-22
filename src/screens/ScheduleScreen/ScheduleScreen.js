@@ -19,7 +19,7 @@ export default function ScheduleScreen(props) {
                 <br></br>
             </View>
             <Image source={require('./Schedule.png')} 
-                    style={{ resizeMode: 'cover', width: '50%', height: '50%' }}/>
+                    style={{ resizeMode: 'stretch', width: 1000, height: 750 }}/>
             <View>
                 <br></br>
                 <br></br>
