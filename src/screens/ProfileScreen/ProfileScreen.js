@@ -20,7 +20,7 @@ export default function ProfileScreen(props) {
     useEffect(() => {
         shiftsRef
             .where("userID", "==", userID)
-            .orderBy("time", "asc")
+            .orderBy("nextShiftStart", "asc")
             .onSnapshot(
                 querySnapshot => {
                     const newshifts = []
