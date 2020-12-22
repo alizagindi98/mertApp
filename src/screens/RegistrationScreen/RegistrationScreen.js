@@ -16,6 +16,14 @@ export default function RegistrationScreen({navigation}) {
     }
 
     const onRegisterPress = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+
+
         if (password !== confirmPassword) {
             alert("Passwords don't match.")
             return
@@ -25,17 +33,33 @@ export default function RegistrationScreen({navigation}) {
             .createUserWithEmailAndPassword(email, password)
             .then((response) => {
                 const uid = response.user.uid
-                const data = {
+                const userData = {
                     id: uid,
                     email,
                     fullName,
+                    rank: "developer",
+                    gradYear: "2021",
+                    profileImagePath: `profileImages/${uid}.png`
                 };
+                const shiftData = {
+                    userId: uid,
+                    nextShift: today 
+                };
+
                 const usersRef = firebase.firestore().collection('users')
+                const shiftsRef = firebase.firestore().collection('shifts')
+                shiftsRef
+                    .doc(uid)
+                    .set(shiftData)
+                    .catch((error) => {
+                        alert(error)
+                    });
+
                 usersRef
                     .doc(uid)
-                    .set(data)
+                    .set(userData)
                     .then(() => {
-                        navigation.navigate('Home', {user: data})
+                        navigation.navigate('Home', {user: userData})
                     })
                     .catch((error) => {
                         alert(error)
