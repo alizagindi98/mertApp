@@ -7,6 +7,7 @@ import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import TasksScreen from '../screens/TasksScreen/TasksScreen';
 import ScheduleScreen from '../screens/ScheduleScreen/ScheduleScreen';
+import UploadScreen from '../screens/UploadScreen/UploadScreen';
 import { AntDesign } from '@expo/vector-icons';
 
 
@@ -45,3 +46,10 @@ export default function TabNavigator(props) {
     </Tab.Navigator>
   );
 }
+
+
+        // <Tab.Screen name="Upload" options={{ 
+        //       tabBarIcon: () => <AntDesign name="upload" size={24} color="black" />
+        //     }}>
+        //     {props => <UploadScreen {...props} extraData={propsvalues} />}
+        // </Tab.Screen>

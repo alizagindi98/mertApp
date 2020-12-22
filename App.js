@@ -3,6 +3,7 @@ import React, { useEffect, useState, Button } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { LoginScreen, RegistrationScreen } from './src/screens'
+import { ProfileScreen, UploadScreen } from './src/screens';
 import TabNavigation from './src/navigation/TabNavigator'
 import { AntDesign } from '@expo/vector-icons';
 import {decode, encode} from 'base-64'
