@@ -39,11 +39,16 @@ export default function RegistrationScreen({navigation}) {
                     fullName,
                     rank: "developer",
                     gradYear: "2021",
-                    profileImagePath: `profileImages/${uid}.png`
+                    boardPosition: "",
+                    dateJoinedMERT: "",
+                    profileImagePath: `profileImages/${email}.png`,
+                    formCompleted: true,
+                    takenAthleticShift: false
                 };
                 const shiftData = {
                     userId: uid,
-                    nextShift: today 
+                    nextShiftStart: "", //list of shifts
+                    hoursRemaining: 30
                 };
 
                 const usersRef = firebase.firestore().collection('users')
