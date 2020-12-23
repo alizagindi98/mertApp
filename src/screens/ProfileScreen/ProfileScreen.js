@@ -20,7 +20,7 @@ export default function ProfileScreen(props) {
     useEffect(() => {
         shiftsRef
             .where("userID", "==", userID)
-            .orderBy("nextShiftStart", "asc")
+            .orderBy("startTime", "asc")
             .onSnapshot(
                 querySnapshot => {
                     const newshifts = []
@@ -52,7 +52,7 @@ export default function ProfileScreen(props) {
             <FlatList
                 data={shifts}
                 renderItem={Text}
-                renderItem={({item}) => <Text style={styles.item}>{item.time.toDate().toLocaleString()}</Text>}
+                renderItem={({item}) => <Text style={styles.item}>{item.startTime.toDate().toLocaleString()}</Text>}
                 keyExtractor={(item) => item.id}
                 removeClippedSubviews={true}
             />

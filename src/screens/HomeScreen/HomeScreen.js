@@ -5,34 +5,39 @@ import { firebase } from '../../firebase/config';
 
 
 export default function HomeScreen(props) {
+    // const userID = props.extraData.id
+    // const now = Date()
 
-  const [entityText, setEntityText] = useState('')
-  const [entities, setEntities] = useState([])
+    // const [nextShiftString, setNextShiftString] = useState([])
+    // const [shifts, setShifts] = useState([])
+    // const shiftsRef = firebase.firestore().collection('shifts')
 
-  const entityRef = firebase.firestore().collection('users')
-  const userID = props.extraData.id
+    // useEffect(() => {
+    //   setNextShiftString(null)
+    //   shiftsRef
+    //     .where("userID", "==", userID)
+    //     .orderBy("startTime", "asc")
+    //     .onSnapshot(
+    //       querySnapshot => {
+    //         const newshifts = []
+    //         querySnapshot.forEach(doc => {
+    //           const shift = doc.data()
+    //           newshifts.push(shift)
+    //           const shiftDate = shift.startTime.toDate()
+    //           if (now <= shiftDate) {
+    //             setNextShiftString(shift.startTime.toDate().toLocaleString())
+    //           }
+    //         });
+    //         setShifts(newshifts)
+    //       },
+    //       error => {
+    //         console.log(error)
+    //       }
+    //     )
+    // }, [])
 
-  useEffect(() => {
-      console.log(userID);
-      entityRef
-          .where("id", "==", userID)
-          .orderBy('createdAt', 'desc')
-          .onSnapshot(
-              querySnapshot => {
-                  const newEntities = []
-                  querySnapshot.forEach(doc => {
-                      const entity = doc.data()
-                      entity.id = doc.id
-                      newEntities.push(entity)
-                      console.log(entityRef.email);
-                  });
-                  setEntities(newEntities)
-              },
-              error => {
-                  console.log(error)
-              }
-          )
-  }, [])
+    // const nextShift = new Date()
+                /*{nextShiftString != null ? "Next Shift\n" + nextShiftString : "No upcoming shifts"}*/
 
     return (
         <View
@@ -52,9 +57,7 @@ export default function HomeScreen(props) {
                 alignItems: "center"
               }}>
               <Text>
-                Next Shift{"\n"}
-                Thursday 12/12/2020{"\n"}
-                3:00-5:00pm
+              {"Working on upcoming shifts"}
               </Text>
             </View>
             <View
