@@ -5,39 +5,39 @@ import { firebase } from '../../firebase/config';
 
 
 export default function HomeScreen(props) {
-    // const userID = props.extraData.id
-    // const now = Date()
+    const userID = props.extraData.id
+    const now = Date()
 
-    // const [nextShiftString, setNextShiftString] = useState([])
-    // const [shifts, setShifts] = useState([])
-    // const shiftsRef = firebase.firestore().collection('shifts')
+    const [nextShift, setNextShift] = useState([])
+    const [shifts, setShifts] = useState([])
+    const shiftsRef = firebase.firestore().collection('shifts')
+    // const [helper, setHelper] = useState([])
 
-    // useEffect(() => {
-    //   setNextShiftString(null)
-    //   shiftsRef
-    //     .where("userID", "==", userID)
-    //     .orderBy("startTime", "asc")
-    //     .onSnapshot(
-    //       querySnapshot => {
-    //         const newshifts = []
-    //         querySnapshot.forEach(doc => {
-    //           const shift = doc.data()
-    //           newshifts.push(shift)
-    //           const shiftDate = shift.startTime.toDate()
-    //           if (now <= shiftDate) {
-    //             setNextShiftString(shift.startTime.toDate().toLocaleString())
-    //           }
-    //         });
-    //         setShifts(newshifts)
-    //       },
-    //       error => {
-    //         console.log(error)
-    //       }
-    //     )
-    // }, [])
-
-    // const nextShift = new Date()
-                /*{nextShiftString != null ? "Next Shift\n" + nextShiftString : "No upcoming shifts"}*/
+    useEffect(() => {
+      setNextShift(null)
+      shiftsRef
+        .where("userID", "==", userID)
+        .orderBy("startTime", "asc")
+        .onSnapshot(
+          querySnapshot => {
+            const newshifts = []
+            var curNextShift = null
+            querySnapshot.forEach(doc => {
+              const shift = doc.data()
+              // newshifts.push(shift)
+              const shiftDate = shift.startTime.toDate()
+              if (now <= Date(shiftDate.toString()) && ((curNextShift == null) || Date(shiftDate.toString()) < Date(curNextShift.toString()))) {
+                curNextShift = shiftDate
+              }
+            });
+            setNextShift(curNextShift)
+            // setShifts(newshifts)
+          },
+          error => {
+            console.log(error)
+          }
+        )
+    }, [])
 
     return (
         <View
@@ -57,7 +57,8 @@ export default function HomeScreen(props) {
                 alignItems: "center"
               }}>
               <Text>
-              {"Working on upcoming shifts"}
+                {"Working on upcoming shifts\n"}
+                {nextShift != null ? "Next Shift\n" + nextShift : "No upcoming shifts"}
               </Text>
             </View>
             <View
