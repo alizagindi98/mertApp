@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, FlatList, Image} from 'react-native';
 import { firebase } from '../../firebase/config';
+import * as Linking from 'expo-linking';
+import ForwardCall from '../../components/HomeScreen/ForwardCall.js';
 
 export default function HomeScreen(props) {
   const userID = props.extraData.id
   const now = Date()
 
   const [nextShift, setNextShift] = useState([])
-  const [shifts, setShifts] = useState([])
-
   const shiftsRef = firebase.firestore().collection('shifts')
+
+  const [monthlyHours, setMonthlyHours] = useState([])
+  const requiredMonthlyHours = 24.0
 
   useEffect(() => {
     setNextShift(null)
@@ -18,22 +21,53 @@ export default function HomeScreen(props) {
       .orderBy("startTime", "asc")
       .onSnapshot(
         querySnapshot => {
-          const newshifts = []
           var curNextShift = null
+          var monthlyHours = 0.0
           querySnapshot.forEach(doc => {
             const shift = doc.data()
-            const shiftDate = shift.startTime.toDate()
-            if (now <= Date(shiftDate.toString()) && ((curNextShift == null) || Date(shiftDate.toString()) < Date(curNextShift.toString()))) {
-              curNextShift = shiftDate
+            const shiftStartDate = shift.startTime.toDate()
+            const shiftEndDate = shift.endTime.toDate()
+            if (now <= Date(shiftStartDate.toString()) && ((curNextShift == null) || Date(shiftStartDate.toString()) < Date(curNextShift.toString()))) {
+              curNextShift = shiftStartDate
+            }
+            else if (Date(shiftEndDate.toString()) < now && Date(shiftEndDate.toString()).getMonth() == now.getMonth() && Date(shiftEndDate.toString()).getYear() == now.getYear() ) {
+              monthlyHours += (shiftEndDate.getTime() - shiftStartDate.getTime()) / (1000 * 60 * 60)
             }
           });
           setNextShift(curNextShift)
+          setMonthlyHours(monthlyHours)
         },
         error => {
           console.log(error)
         }
       )
   }, [])
+
+  const [contacts, setContacts] = useState([])
+  const contactsRef = firebase.firestore().collection('contacts')
+  const [helper, setHelper] = useState([])
+
+  useEffect(() => {
+    contactsRef
+      .orderBy("name", "asc")
+      .onSnapshot(
+        querySnapshot => {
+          const contactList = []
+          querySnapshot.forEach(doc => {
+            const contact = doc.data()
+            contactList.push(contact)
+            setHelper(contact.name)
+          });
+          setContacts(contactList)
+        },
+        error => {
+          console.log(error)
+        }
+      )
+  }, [])
+
+
+
 
   return (
     <View
@@ -64,10 +98,15 @@ export default function HomeScreen(props) {
             alignItems: "center"
           }}>
           <Text>
-            Contacts{"\n"}
-            Leah{"\n"}
-            Michael
+            Contacts:
           </Text>
+          <FlatList
+              data={contacts}
+              renderItem={Text}
+              renderItem={({item}) => <ForwardCall href={"tel:" + item.phoneNumber} text={item.name}> </ForwardCall>}
+              keyExtractor={(item) => item.id}
+              removeClippedSubviews={true}
+          />
         </View>
       </View>
       <View
@@ -83,9 +122,8 @@ export default function HomeScreen(props) {
             alignItems: "center"
           }}>
           <Text>
-            Remaining Hours for the Month{"\n"}
-            30{"\n"}
-            That is 4 hours to go
+            Hours this month: {"\n"}
+            {monthlyHours} out of {requiredMonthlyHours}
           </Text>
         </View>
         <View

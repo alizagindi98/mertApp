@@ -4,7 +4,6 @@ import { firebase } from '../../firebase/config'
 
 export default class AsyncImage extends React.Component {
 
-
     constructor(props) {
         super(props);
         this.state =
@@ -13,15 +12,12 @@ export default class AsyncImage extends React.Component {
                 mounted: true,
                 image: "/images/logoblue.jpg",
                 url: "",
-
             }
-
     }
 
     componentDidMount() {
         this.setState({ isMounted: true })
         this.getAndLoadHttpUrl()
-
     }
 
     async getAndLoadHttpUrl() {
@@ -43,14 +39,12 @@ export default class AsyncImage extends React.Component {
         this.setState({ isMounted: false })
     }
 
-
     componentWillReceiveProps(props) {
         this.props = props
         if (this.props.refresh == true) {
 
         }
     }
-
 
     render() {
         if (this.state.mounted == true) {
@@ -71,5 +65,4 @@ export default class AsyncImage extends React.Component {
             return null
         }
     }
-
 }
